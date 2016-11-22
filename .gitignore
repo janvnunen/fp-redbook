@@ -1,0 +1,10 @@
+target
+bin
+.project
+.classpath
+.settings
+.cache
+.cache-main
+.cache-tests
+.worksheet
+.idea
