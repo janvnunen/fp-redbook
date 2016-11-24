@@ -54,6 +54,7 @@ object Option {
   // Exercise 4.02
   def variance(xs: Seq[Double]): Option[Double] = ???
 
+  // Exercise 4.03
   def map2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] = ???
 
   def sequence[A](a: List[Option[A]]): Option[List[A]] = ???
