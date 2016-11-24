@@ -57,6 +57,7 @@ object Option {
   // Exercise 4.03
   def map2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] = ???
 
+  // Exercise 4.04
   def sequence[A](a: List[Option[A]]): Option[List[A]] = ???
 
   def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] = ???
