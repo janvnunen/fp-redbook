@@ -60,5 +60,10 @@ object Option {
   // Exercise 4.04
   def sequence[A](a: List[Option[A]]): Option[List[A]] = ???
 
+  // Exercise 4.05
   def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] = ???
+
+  // Exercise 4.05
+  def sequence_via_traverse[A](a: List[Option[A]]): Option[List[A]] = ???
+
 }
