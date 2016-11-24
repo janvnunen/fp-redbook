@@ -51,6 +51,7 @@ object Option {
     if (xs.isEmpty) None
     else Some(xs.sum / xs.length)
 
+  // Exercise 4.02
   def variance(xs: Seq[Double]): Option[Double] = ???
 
   def map2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] = ???
