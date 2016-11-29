@@ -19,6 +19,9 @@ trait Stream[+A] {
     case Cons(h, t) => if (f(h())) Some(h()) else t().find(f)
   }
 
+  // Exercise 5.01
+  def toList: List[A] = ???
+
   def take(n: Int): Stream[A] = ???
 
   def drop(n: Int): Stream[A] = ???
