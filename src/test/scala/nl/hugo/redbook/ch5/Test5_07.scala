@@ -4,7 +4,7 @@ import org.scalatest._
 
 class Test5_07 extends WordSpec with Matchers {
   "A Stream" should {
-    "return map its values" in {
+    "return its mapped values" in {
       Stream(1, 2, 3, 4).map(_.toString).toList should be(List("1", "2", "3", "4"))
     }
 
