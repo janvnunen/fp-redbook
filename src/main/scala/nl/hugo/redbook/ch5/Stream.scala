@@ -31,6 +31,7 @@ trait Stream[+A] {
   // Exercise 5.03
   def takeWhile(p: A => Boolean): Stream[A] = ???
 
+  // Exercise 5.04
   def forAll(p: A => Boolean): Boolean = ???
 
   def headOption: Option[A] = ???
