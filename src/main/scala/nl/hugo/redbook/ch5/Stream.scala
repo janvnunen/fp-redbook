@@ -77,6 +77,7 @@ object Stream {
   // Exercise 5.8
   def constant[A](a: A): Stream[A] = ???
 
+  // Exercise 5.9
   def from(n: Int): Stream[Int] = ???
 
   def unfold[A, S](z: S)(f: S => Option[(A, S)]): Stream[A] = ???
