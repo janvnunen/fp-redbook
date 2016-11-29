@@ -37,6 +37,7 @@ trait Stream[+A] {
   // Exercise 5.05
   def takeWhileViaFoldRight(p: A => Boolean): Stream[A] = ???
 
+  // Exercise 5.06
   def headOption: Option[A] = ???
 
   // 5.7 map, filter, append, flatmap using foldRight. Part of the exercise is
