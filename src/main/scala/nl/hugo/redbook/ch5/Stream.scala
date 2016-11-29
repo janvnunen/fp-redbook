@@ -73,6 +73,8 @@ trait Stream[+A] {
   // Exercise 5.15
   def tails: Stream[Stream[A]] = ???
 
+  // Exercise 5.16
+  def scanRight[B](z: B)(f: (A, => B) => B): Stream[B] = ???
 }
 
 case object Empty extends Stream[Nothing]
