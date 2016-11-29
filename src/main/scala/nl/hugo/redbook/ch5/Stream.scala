@@ -80,5 +80,8 @@ object Stream {
   // Exercise 5.9
   def from(n: Int): Stream[Int] = ???
 
+  // Exercise 5.10
+  def fibs: Stream[Int] = ???
+
   def unfold[A, S](z: S)(f: S => Option[(A, S)]): Stream[A] = ???
 }
