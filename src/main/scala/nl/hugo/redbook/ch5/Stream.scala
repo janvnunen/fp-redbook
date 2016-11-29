@@ -22,8 +22,10 @@ trait Stream[+A] {
   // Exercise 5.01
   def toList: List[A] = ???
 
+  // Exercise 5.02
   def take(n: Int): Stream[A] = ???
 
+  // Exercise 5.02
   def drop(n: Int): Stream[A] = ???
 
   def takeWhile(p: A => Boolean): Stream[A] = ???
