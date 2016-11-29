@@ -28,6 +28,7 @@ trait Stream[+A] {
   // Exercise 5.02
   def drop(n: Int): Stream[A] = ???
 
+  // Exercise 5.03
   def takeWhile(p: A => Boolean): Stream[A] = ???
 
   def forAll(p: A => Boolean): Boolean = ???
