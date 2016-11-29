@@ -69,6 +69,10 @@ trait Stream[+A] {
 
   // Exercise 5.14
   def startsWith[B](s: Stream[B]): Boolean = ???
+
+  // Exercise 5.15
+  def tails: Stream[Stream[A]] = ???
+
 }
 
 case object Empty extends Stream[Nothing]
