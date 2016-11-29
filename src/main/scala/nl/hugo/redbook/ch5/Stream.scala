@@ -74,6 +74,9 @@ object Stream {
 
   val ones: Stream[Int] = Stream.cons(1, ones)
 
+  // Exercise 5.8
+  def constant[A](a: A): Stream[A] = ???
+
   def from(n: Int): Stream[Int] = ???
 
   def unfold[A, S](z: S)(f: S => Option[(A, S)]): Stream[A] = ???
