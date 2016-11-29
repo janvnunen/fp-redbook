@@ -15,6 +15,10 @@ class Test5_03 extends WordSpec with Matchers {
     "return all elements if they all match the predicate" in {
       Stream(1, 1, 1, 1).takeWhile(_ == 1).toList should be(List(1, 1, 1, 1))
     }
+
+    "return all elements upto mismatching element, not the other matching elements" in {
+      Stream(1, 1, 2, 1).takeWhile(_ == 1).toList should be(List(1, 1))
+    }
   }
 
   "An Empty" should {
