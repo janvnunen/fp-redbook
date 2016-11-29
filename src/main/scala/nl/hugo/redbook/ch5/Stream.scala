@@ -52,6 +52,21 @@ trait Stream[+A] {
   // Exercise 5.7
   def flatMap[B](f: A => Stream[B]): Stream[B] = ???
 
+  // Exercise 5.13
+  def mapViaUnfold[B](f: A => B): Stream[B] = ???
+
+  // Exercise 5.13
+  def takeViaUnfold(n: Int): Stream[A] = ???
+
+  // Exercise 5.13
+  def takeWhileViaUnfold(p: A => Boolean): Stream[A] = ???
+
+  // Exercise 5.13
+  def zipWith[B, C](s: Stream[B])(f: (A, B) => C): Stream[C] = ???
+
+  // Exercise 5.13
+  def zipAll[B](s2: Stream[B]): Stream[(Option[A], Option[B])] = ???
+
   def startsWith[B](s: Stream[B]): Boolean = ???
 }
 
