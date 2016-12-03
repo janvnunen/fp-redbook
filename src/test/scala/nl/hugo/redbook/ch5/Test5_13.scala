@@ -68,58 +68,58 @@ class Test5_13 extends WordSpec with Matchers {
   }
 
   "A Stream" should {
-    "zip a stream with another steam" in {
+    "zipWith a stream with another steam" in {
       Stream(1, 10, 100).zipWith(Stream(2, 3, 4))(_ + _).toList should be(List(3, 13, 104))
     }
 
-    "zip a stream with and empty" in {
+    "zipWith a stream with and empty" in {
       Stream(1, 1, 1).zipWith(Empty)((_, _) => 2).toList should be(Nil)
     }
 
-    "zip a stream with an shorter stream" in {
+    "zipWith a stream with an shorter stream" in {
       Stream(1, 10, 100).zipWith(Stream(2, 3))(_ + _).toList should be(List(3, 13))
     }
 
-    "zip a stream with a longer stream" in {
+    "zipWith a stream with a longer stream" in {
       Stream(1, 10).zipWith(Stream(200, 300, 400))(_ + _).toList should be(List(201, 310))
     }
   }
 
   "An Empty" should {
-    "zip with a stream" in {
+    "zipWith with a stream" in {
       Empty.zipWith(Stream(1))((_, _) => 2).toList should be(Nil)
     }
 
-    "zip with an Empty" in {
+    "zipWith with an Empty" in {
       Empty.zipWith(Empty)((_, _) => 2).toList should be(Nil)
     }
   }
 
   "A Stream" should {
-    "zip a stream with another steam" in {
+    "zipAll a stream with another steam" in {
       Stream(1, 2, 3).zipAll(Stream(4, 5, 6)).toList should be(List((Some(1), Some(4)), (Some(2), Some(5)), (Some(3), Some(6))))
     }
 
-    "zip a stream with and empty" in {
+    "zipAll a stream with and empty" in {
       Stream(1, 2, 3).zipAll(Empty).toList should be(List((Some(1), None), (Some(2), None), (Some(3), None)))
 
     }
 
-    "zip a stream with an shorter stream" in {
+    "zipAll a stream with an shorter stream" in {
       Stream(1, 2, 3).zipAll(Stream(4, 5)).toList should be(List((Some(1), Some(4)), (Some(2), Some(5)), (Some(3), None)))
     }
 
-    "zip a stream with a longer stream" in {
+    "zipAll a stream with a longer stream" in {
       Stream(1, 2).zipAll(Stream(4, 5, 6)).toList should be(List((Some(1), Some(4)), (Some(2), Some(5)), (None, Some(6))))
     }
   }
 
   "An Empty" should {
-    "zip with a stream" in {
+    "zipAll with a stream" in {
       Empty.zipAll(Stream(1)).toList should be(List((None, Some(1))))
     }
 
-    "zip with an Empty" in {
+    "zipAll with an Empty" in {
       Empty.zipAll(Empty).toList should be(Nil)
     }
   }
