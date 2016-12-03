@@ -29,7 +29,7 @@ class Test4_06 extends WordSpec with Matchers {
     }
 
     "return Right when applied to Left" in {
-      Left(1).flatMap(_ => Right(2)) should be(Right(2))
+      Left(1).flatMap(_ => Right(2)) should be(Left(1))
     }
   }
 
