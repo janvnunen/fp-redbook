@@ -12,7 +12,7 @@ object Exercise24 {
 
   def hasSubsequence[A](sup: List[A], sub: List[A]): Boolean =
     (sup, sub) match {
-      case (_,Nil) => true
+      case (_, Nil) => true
       case (Nil, _) => false
       case (Cons(_, t), _) => startsWith(sup, sub) || hasSubsequence(t, sub)
     }

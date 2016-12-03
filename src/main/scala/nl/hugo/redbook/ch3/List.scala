@@ -83,11 +83,11 @@ object List {
 
   // exercise 3.18
   def map[A, B](as: List[A])(f: A => B): List[B] =
-    foldRight(as, Nil: List[B])( (h,t) => Cons(f(h),t))
+    foldRight(as, Nil: List[B])((h, t) => Cons(f(h), t))
 
   // exercise 3.19
   def filter[A](as: List[A])(p: A => Boolean): List[A] =
-    foldRight(as, Nil: List[A])( (h,t) => if (p(h)) Cons(h,t) else t )
+    foldRight(as, Nil: List[A])((h, t) => if (p(h)) Cons(h, t) else t)
 
   // exercise 3.20
   def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
@@ -95,8 +95,8 @@ object List {
 
   // exercise 3.23
   def zipWith[A, B, C](as: List[A], bs: List[B])(f: (A, B) => C): List[C] =
-    (as,bs) match {
-      case (Cons(hl, tl), Cons(hr, tr)) => Cons(f(hl,hr), zipWith(tl,tr)(f))
+    (as, bs) match {
+      case (Cons(hl, tl), Cons(hr, tr)) => Cons(f(hl, hr), zipWith(tl, tr)(f))
       case _ => Nil
     }
 

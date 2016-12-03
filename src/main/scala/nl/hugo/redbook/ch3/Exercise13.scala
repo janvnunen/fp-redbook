@@ -8,5 +8,5 @@ object Exercise13 {
     List.foldLeft(reverse(as), z)((b, a) => f(a, b))
 
   def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B =
-    List.foldRight(reverse(as), z)((a,b) => f(b, a))
+    List.foldRight(reverse(as), z)((a, b) => f(b, a))
 }
