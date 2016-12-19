@@ -1,6 +1,6 @@
 package nl.hugo.redbook.ch6
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.{ Matchers, WordSpec }
 
 class Test6_02 extends WordSpec with Matchers {
   "RNG.double" should {
