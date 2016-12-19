@@ -75,6 +75,7 @@ object RNG {
     ((d0, d1, d2), r4)
   }
 
+  // Exercise 6.04
   def ints(count: Int)(rng: RNG): (List[Int], RNG) = {
     if (count > 0) {
       val (i, r) = rng.nextInt
@@ -83,6 +84,9 @@ object RNG {
     } else
       (List.empty, rng)
   }
+
+  // Exercise 6.05
+  def doubleViaMap: Rand[Double] = ???
 
   def map2[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = ???
 
