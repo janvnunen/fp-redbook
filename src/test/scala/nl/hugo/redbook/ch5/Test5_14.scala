@@ -14,4 +14,3 @@ class Test5_14 extends WordSpec with Matchers {
   }
 }
 
-
