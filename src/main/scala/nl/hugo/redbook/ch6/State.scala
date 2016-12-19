@@ -86,7 +86,7 @@ object RNG {
   }
 
   // Exercise 6.05
-  def doubleViaMap: Rand[Double] = ???
+  def doubleViaMap: Rand[Double] = map(nonNegativeInt)(_ / (Int.MaxValue.toDouble + 1))
 
   def map2[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = ???
 
