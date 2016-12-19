@@ -50,10 +50,13 @@ object RNG {
     (v / (Int.MaxValue.toDouble + 1), r)
   }
 
+  // Exercise 6.03
   def intDouble(rng: RNG): ((Int, Double), RNG) = ???
 
+  // Exercise 6.03
   def doubleInt(rng: RNG): ((Double, Int), RNG) = ???
 
+  // Exercise 6.03
   def double3(rng: RNG): ((Double, Double, Double), RNG) = ???
 
   def ints(count: Int)(rng: RNG): (List[Int], RNG) = ???
