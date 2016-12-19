@@ -32,8 +32,10 @@ object RNG {
       (f(a), rng2)
     }
 
+  // Exercise 6.01
   def nonNegativeInt(rng: RNG): (Int, RNG) = ???
 
+  // Exercise 6.02
   def double(rng: RNG): (Double, RNG) = ???
 
   def intDouble(rng: RNG): ((Int, Double), RNG) = ???
