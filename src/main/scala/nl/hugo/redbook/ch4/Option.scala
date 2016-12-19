@@ -35,7 +35,7 @@ sealed trait Option[+A] {
           Some(a)
         else
           None
-      )
+    )
 }
 
 case class Some[+A](get: A) extends Option[A]
@@ -83,7 +83,7 @@ object Option {
 
   // Exercise 4.05
   def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] =
-    a.foldRight[Option[List[B]]](Some(Nil))((v,l) => map2( f(v), l)(_::_))
+    a.foldRight[Option[List[B]]](Some(Nil))((v, l) => map2(f(v), l)(_ :: _))
 
   // Exercise 4.05
   def sequence_via_traverse[A](a: List[Option[A]]): Option[List[A]] =

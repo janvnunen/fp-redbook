@@ -45,7 +45,6 @@ trait Stream[+A] {
       case _ => empty
     }
 
-
   // Exercise 5.04
   def forAll(p: A => Boolean): Boolean =
     foldRight(true)((a, b) => p(a) && b)
@@ -101,7 +100,6 @@ trait Stream[+A] {
       case (Cons(hl, tl), Cons(hr, tr)) => Some(f(hl(), hr()), (tl(), tr()))
       case _ => None
     }
-
 
   // Exercise 5.13
   def zipAll[B](s2: Stream[B]): Stream[(Option[A], Option[B])] =
