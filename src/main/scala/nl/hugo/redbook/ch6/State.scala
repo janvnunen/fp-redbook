@@ -33,10 +33,22 @@ object RNG {
     }
 
   // Exercise 6.01
-  def nonNegativeInt(rng: RNG): (Int, RNG) = ???
+  def nonNegativeInt(rng: RNG): (Int, RNG) = {
+    val (v, r) = rng.nextInt
+
+    (v match {
+      case Int.MinValue => 0
+      case s if s < 0 => -s
+      case s => s
+    }, r)
+  }
 
   // Exercise 6.02
-  def double(rng: RNG): (Double, RNG) = ???
+  def double(rng: RNG): (Double, RNG) = {
+    val (v, r) = nonNegativeInt(rng)
+
+    (v / (Int.MaxValue.toDouble + 1), r)
+  }
 
   def intDouble(rng: RNG): ((Int, Double), RNG) = ???
 
