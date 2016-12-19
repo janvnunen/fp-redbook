@@ -51,13 +51,29 @@ object RNG {
   }
 
   // Exercise 6.03
-  def intDouble(rng: RNG): ((Int, Double), RNG) = ???
+  def intDouble(rng: RNG): ((Int, Double), RNG) = {
+    val (i, r2) = rng.nextInt
+    val (d, r3) = RNG.double(r2)
+
+    ((i, d), r3)
+  }
 
   // Exercise 6.03
-  def doubleInt(rng: RNG): ((Double, Int), RNG) = ???
+  def doubleInt(rng: RNG): ((Double, Int), RNG) = {
+    val (d, r2) = RNG.double(rng)
+    val (i, r3) = r2.nextInt
+
+    ((d, i), r3)
+  }
 
   // Exercise 6.03
-  def double3(rng: RNG): ((Double, Double, Double), RNG) = ???
+  def double3(rng: RNG): ((Double, Double, Double), RNG) = {
+    val (d0, r2) = RNG.double(rng)
+    val (d1, r3) = RNG.double(r2)
+    val (d2, r4) = RNG.double(r3)
+
+    ((d0, d1, d2), r4)
+  }
 
   def ints(count: Int)(rng: RNG): (List[Int], RNG) = ???
 
