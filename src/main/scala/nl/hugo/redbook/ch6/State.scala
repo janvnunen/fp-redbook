@@ -47,7 +47,11 @@ object RNG {
   // Exercise 6.03
   def double3(rng: RNG): ((Double, Double, Double), RNG) = ???
 
+  // Exercise 6.04
   def ints(count: Int)(rng: RNG): (List[Int], RNG) = ???
+
+  // Exercise 6.05
+  def doubleViaMap: Rand[Double] = ???
 
   def map2[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = ???
 
