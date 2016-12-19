@@ -24,7 +24,7 @@ class Test6_02 extends WordSpec with Matchers {
       RNG.double(mock)._1 should be(0.9999999995343387 +- 1e-12)
     }
 
-    "return the new RNG object" in {
+    "return the next RNG object" in {
       val mock = RNGMock(0, rng)
 
       RNG.double(mock)._2 should be(rng)
