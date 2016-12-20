@@ -5,7 +5,7 @@ import org.scalatest._
 class Test6_06 extends WordSpec with Matchers {
   val rng = RNG.Simple(0)
 
-  "RNG.doubleViaMap" should {
+  "RNG.map2" should {
     "apply the function f" in {
       val l = RNG.unit(1234)
       val r = RNG.unit(5678)
