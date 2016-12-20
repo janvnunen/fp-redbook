@@ -15,7 +15,7 @@ class Test6_06 extends WordSpec with Matchers {
 
     "progress the RNG object" in {
       val (_, rng2) = rng.nextInt
-      val (_, rng3) = rng.nextInt
+      val (_, rng3) = rng2.nextInt
 
       RNG.map2(RNG.doubleViaMap, RNG.doubleViaMap)(_ + _)(rng)._2 should be(rng3)
     }
