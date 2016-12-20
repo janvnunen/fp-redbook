@@ -96,6 +96,7 @@ object RNG {
       (f(va, vb), rng3)
     }
 
+  // Exercise 6.07
   def sequence[A](fs: List[Rand[A]]): Rand[List[A]] = ???
 
   def flatMap[A, B](f: Rand[A])(g: A => Rand[B]): Rand[B] = ???
