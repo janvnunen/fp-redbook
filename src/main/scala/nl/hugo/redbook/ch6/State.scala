@@ -118,6 +118,12 @@ object RNG {
           nonNegativeLessThan(n)
       }(rng)
   }
+
+  // Exercise 6.09
+  def mapViaFlatMap[A, B](s: Rand[A])(f: A => B): Rand[B] = ???
+
+  // Exercise 6.09
+  def map2ViaFlatMap[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = ???
 }
 
 case class State[S, +A](run: S => (A, S)) {
