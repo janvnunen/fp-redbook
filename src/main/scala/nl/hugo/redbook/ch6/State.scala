@@ -100,5 +100,6 @@ object State {
   // Exercise 6.10
   def sequence[S, A](sas: List[State[S, A]]): State[S, List[A]] = ???
 
+  // Exercise 6.11
   def simulateMachine(inputs: List[Input]): State[Machine, (Int, Int)] = ???
 }
