@@ -167,5 +167,6 @@ object State {
   def sequence[S, A](sas: List[State[S, A]]): State[S, List[A]] =
     sas.foldRight(unit[S, List[A]](Nil))((f, acc) => f.map2(acc)(_ :: _))
 
+  // Exercise 6.11
   def simulateMachine(inputs: List[Input]): State[Machine, (Int, Int)] = ???
 }
