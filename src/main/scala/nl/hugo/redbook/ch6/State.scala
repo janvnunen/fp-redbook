@@ -101,10 +101,23 @@ object RNG {
     fs.foldRight(unit(List[A]()))((f, acc) => map2(f, acc)(_ :: _))
 
   // Exercise 6.08
-  def flatMap[A, B](f: Rand[A])(g: A => Rand[B]): Rand[B] = ???
+  def flatMap[A, B](f: Rand[A])(g: A => Rand[B]): Rand[B] = {
+    rng =>
+      val (v, rng2) = f(rng)
+      g(v)(rng2)
+  }
 
   // Exercise 6.08
-  def nonNegativeLessThan(n: Int): Rand[Int] = ???
+  def nonNegativeLessThan(n: Int): Rand[Int] = {
+    rng =>
+      RNG.flatMap(nonNegativeInt) { i: Int =>
+        val mod = i % n
+        if (i + (n - 1) - mod >= 0)
+          RNG.unit(mod)
+        else
+          nonNegativeLessThan(n)
+      }(rng)
+  }
 }
 
 case class State[S, +A](run: S => (A, S)) {
