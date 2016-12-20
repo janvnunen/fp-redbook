@@ -120,10 +120,14 @@ object RNG {
   }
 
   // Exercise 6.09
-  def mapViaFlatMap[A, B](s: Rand[A])(f: A => B): Rand[B] = ???
+  def mapViaFlatMap[A, B](s: Rand[A])(f: A => B): Rand[B] =
+    RNG.flatMap(s)(a => RNG.unit(f(a)))
 
   // Exercise 6.09
-  def map2ViaFlatMap[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = ???
+  def map2ViaFlatMap[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] =
+    RNG.flatMap(ra) { a =>
+      RNG.map(rb)(b => f(a, b))
+    }
 }
 
 case class State[S, +A](run: S => (A, S)) {
