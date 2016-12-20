@@ -9,7 +9,7 @@ class Test6_07 extends WordSpec with Matchers {
     "sequence a List[RNG[A]] into a List[A]" in {
       val ints = List(RNG.unit(1), RNG.unit(2), RNG.unit(3))
 
-      RNG.sequence(ints)(rng)._2 should be(List(1, 2, 3))
+      RNG.sequence(ints)(rng)._1 should be(List(1, 2, 3))
     }
 
     "progress the RNG object" in {
