@@ -168,7 +168,6 @@ object State {
     sas.foldRight(unit[S, List[A]](Nil))((f, acc) => f.map2(acc)(_ :: _))
 
   // Exercise 6.11
-
   def set[S](s: S): State[S, Unit] = State(_ => ((), s))
 
   def get[S]: State[S, S] = State(s => (s, s))
