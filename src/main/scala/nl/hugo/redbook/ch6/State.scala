@@ -132,13 +132,21 @@ object RNG {
 
 case class State[S, +A](run: S => (A, S)) {
   // Exercise 6.10
-  def map[B](f: A => B): State[S, B] = ???
+  def map[B](f: A => B): State[S, B] =
+    this.flatMap { a => State.unit(f(a)) }
 
   // Exercise 6.10
-  def map2[B, C](sb: State[S, B])(f: (A, B) => C): State[S, C] = ???
+  def map2[B, C](sb: State[S, B])(f: (A, B) => C): State[S, C] =
+    this.flatMap { a =>
+      sb.map { b => f(a, b) }
+    }
 
   // Exercise 6.10
-  def flatMap[B](f: A => State[S, B]): State[S, B] = ???
+  def flatMap[B](f: A => State[S, B]): State[S, B] =
+    State { s =>
+      val (a, s2) = this.run(s)
+      f(a).run(s2)
+    }
 }
 
 sealed trait Input
@@ -153,10 +161,11 @@ object State {
   type Rand[A] = State[RNG, A]
 
   // Exercise 6.10
-  def unit[S, A](a: A): State[S, A] = ???
+  def unit[S, A](a: A): State[S, A] = State(s => (a, s))
 
   // Exercise 6.10
-  def sequence[S, A](sas: List[State[S, A]]): State[S, List[A]] = ???
+  def sequence[S, A](sas: List[State[S, A]]): State[S, List[A]] =
+    sas.foldRight(unit[S, List[A]](Nil))((f, acc) => f.map2(acc)(_ :: _))
 
   def simulateMachine(inputs: List[Input]): State[Machine, (Int, Int)] = ???
 }
