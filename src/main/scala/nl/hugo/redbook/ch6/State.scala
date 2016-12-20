@@ -168,5 +168,27 @@ object State {
     sas.foldRight(unit[S, List[A]](Nil))((f, acc) => f.map2(acc)(_ :: _))
 
   // Exercise 6.11
-  def simulateMachine(inputs: List[Input]): State[Machine, (Int, Int)] = ???
+
+  def set[S](s: S): State[S, Unit] = State(_ => ((), s))
+
+  def get[S]: State[S, S] = State(s => (s, s))
+
+  def modify[S](f: S => S): State[S, Unit] = for {
+    s <- get
+    _ <- set(f(s))
+  } yield ()
+
+  def update(i: Input): Machine => Machine =
+    (s: Machine) =>
+      (i, s) match {
+        case (Coin, Machine(true, candies, coins)) => Machine(locked = false, candies, coins)
+        case (Turn, Machine(false, candies, coins)) if candies > 0 => Machine(locked = true, candies - 1, coins + 1)
+        case _ => s
+      }
+
+  def simulateMachine(inputs: List[Input]): State[Machine, (Int, Int)] =
+    for {
+      _ <- sequence(inputs map (modify[Machine] _ compose update))
+      s <- get
+    } yield (s.coins, s.candies)
 }
