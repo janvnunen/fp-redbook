@@ -5,7 +5,7 @@ import org.scalatest._
 class Test6_10 extends WordSpec with Matchers {
   "State" should {
     "be initalized using the unit function" in {
-      State.unit(123).run(1)._1 should be((123, 1))
+      State.unit(123).run(1) should be((123, 1))
     }
 
     "map its output using the map function" in {
