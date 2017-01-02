@@ -21,19 +21,37 @@ object List {
     else Cons(as.head, apply(as.tail: _*))
 
   // exercise 3.2
-  def tail[A](as: List[A]): List[A] = ???
+  def tail[A](as: List[A]): List[A] = as match {
+    case Nil => throw new Exception("Cannot determine the tail of an empty list")
+      // Alternatively we could choose to return Nil for the tail of an empty list
+    case Cons(_, xs) => xs
+  }
 
   // exercise 3.3
-  def setHead[A](as: List[A], head: A): List[A] = ???
+  def setHead[A](as: List[A], head: A): List[A] = as match {
+    case Nil => throw new Exception("Cannot replace the head of an empty list")
+    case Cons(_, xs) => Cons(head, xs)
+  }
 
   // exercise 3.4
-  def drop[A](as: List[A], n: Int): List[A] = ???
+  def drop[A](as: List[A], n: Int): List[A] = as match {
+//    case Nil if n > 0 => throw new Exception("Cannot drop more elements than present in the list")
+    case Cons(_, xs) if n > 0 => drop(xs, n-1)
+    case other => other
+  }
 
   // exercise 3.5
-  def dropWhile[A](as: List[A], f: A => Boolean): List[A] = ???
+  def dropWhile[A](as: List[A], f: A => Boolean): List[A] = as match {
+    case Cons(x, xs) if f(x) => dropWhile(xs, f)
+    case other => other
+  }
 
   // exercise 3.6
-  def init[A](as: List[A]): List[A] = ???
+  def init[A](as: List[A]): List[A] = as match {
+    case Nil => throw new Exception("Cannot take all except last element from an empty list")
+    case Cons(_, Nil) => Nil
+    case Cons(x, xs)  => Cons(x, init(xs))
+  }
 
   // exercise 3.9
   def length[A](as: List[A]): Int = ???
