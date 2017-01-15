@@ -11,7 +11,7 @@ class Test3_24 extends WordSpec with Matchers {
       hasSubsequence(List(1, 2, 3, 4), List(1, 2, 3, 4)) should be(true)
     }
 
-    "determine that one list is contained somwhere in another" in {
+    "determine that one list is contained somewhere in another" in {
       hasSubsequence(List(1, 2, 3, 4), List(2, 3)) should be(true)
     }
 

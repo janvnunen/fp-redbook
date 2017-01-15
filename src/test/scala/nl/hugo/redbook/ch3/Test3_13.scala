@@ -22,4 +22,11 @@ class Test3_13 extends WordSpec with Matchers {
       Exercise13.foldLeft(List(1, 2, 3), 0)(_ - _) should be(foldLeft(List(1, 2, 3), 0)(_ - _))
     }
   }
+
+  "foldRight, based on foldLeft" should {
+
+    "have the same result as the foldRight" in {
+      Exercise13.foldRight(List(1, 2, 3), 0)(_ - _) should be(foldRight(List(1, 2, 3), 0)(_ - _))
+    }
+  }
 }

@@ -7,11 +7,13 @@ class Test3_07 extends WordSpec with Matchers {
 
   "foldRightLazy" should {
 
-    "halt the recusion prematurely" in {
+    "halt the recursion prematurely" in {
       var count = 0
 
       def multiply[A](x: Double, y: => Double): Double = {
         count += 1
+        // Next line  make sure that when x == 0, that y is not evaluated anymore (because we use second parameter lazily (=> B))
+        // This will not work for large lists, because it is not tail-recursive.
         if (x != 0.0) x * y else 0.0
       }
 

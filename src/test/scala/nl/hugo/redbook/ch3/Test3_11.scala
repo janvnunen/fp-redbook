@@ -7,7 +7,7 @@ class Test3_11 extends WordSpec with Matchers {
 
   "sum" should {
 
-    "calculate the sum  ofall elements of a list" in {
+    "calculate the sum of all elements of a list" in {
       sum(List(1, 2, 3, 4, 5)) should be(List.sum(List(1, 2, 3, 4, 5)))
     }
 
@@ -24,6 +24,17 @@ class Test3_11 extends WordSpec with Matchers {
 
     "return 1.0 for an empty list" in {
       product(Nil) should be(List.product(Nil))
+    }
+  }
+
+  "length" should {
+
+    "return the number of elements of a list" in {
+      Exercise11.length(List(1.0, 2.0, 3.0)) should be(3)
+    }
+
+    "return 0 for an empty list" in {
+      Exercise11.length(Nil) should be(0)
     }
   }
 }

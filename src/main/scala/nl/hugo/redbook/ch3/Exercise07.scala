@@ -1,5 +1,9 @@
 package nl.hugo.redbook.ch3
 
 object Exercise07 {
-  def foldRightLazy[A, B](as: List[A], z: B)(f: (A, => B) => B): B = ???
+  // Mind the "=>" before the B parameter in f; that results in lazy evaluation of B part
+  def foldRightLazy[A, B](as: List[A], z: B)(f: (A, => B) => B): B = as match {
+      case Nil         => z
+      case Cons(x, xs) => f(x, foldRightLazy(xs,z)(f))
+    }
 }

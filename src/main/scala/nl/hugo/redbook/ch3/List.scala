@@ -1,5 +1,7 @@
 package nl.hugo.redbook.ch3
 
+import scala.annotation.tailrec
+
 sealed trait List[+A]
 case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
@@ -54,31 +56,53 @@ object List {
   }
 
   // exercise 3.9
-  def length[A](as: List[A]): Int = ???
+  def length[A](as: List[A]): Int = foldRight(as, 0)((_,c) => c + 1)
 
   // exercise 3.10
-  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = ???
+  @tailrec
+  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = as match {
+    case Nil         => z
+    case Cons(x, xs) => foldLeft(xs, f(z,x))(f)
+  }
 
   // exercise 3.12
-  def reverse[A](as: List[A]): List[A] = ???
+  def reverse[A](as: List[A]): List[A] = foldLeft(as, Nil: List[A])((result, current) => Cons(current, result))
 
   // exercise 3.13
-  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = ???
+  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = as match {
+    case Nil         => z
+    case Cons(x, xs) => f(x, foldRight(xs,z)(f))
+  }
 
   // exercise 3.14
-  def append[A](l: List[A], r: List[A]): List[A] = ???
+  def append[A](l: List[A], r: List[A]): List[A] = foldRight(l, r)((current, result) => Cons(current, result))
+  def appendL[A](l: List[A], r: List[A]): List[A] = foldLeft(reverse(l), r)((result, current) => Cons(current, result))
 
   // exercise 3.18
-  def map[A, B](as: List[A])(f: A => B): List[B] = ???
+  def map[A, B](as: List[A])(f: A => B): List[B] = as match {
+    case Nil         => Nil
+    case Cons(x, xs) => Cons(f(x), map(xs)(f))
+  }
 
   // exercise 3.19
-  def filter[A](as: List[A])(p: A => Boolean): List[A] = ???
+  def filter[A](as: List[A])(p: A => Boolean): List[A] = as match {
+    case Nil                 => Nil
+    case Cons(x, xs) if p(x) => Cons(x, filter(xs)(p))
+    case Cons(_, xs)         => filter(xs)(p)
+  }
 
   // exercise 3.20
-  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] = ???
+  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] = as match {
+    case Nil         => Nil
+    case Cons(x, xs) => append(f(x), flatMap(xs)(f))
+  }
 
   // exercise 3.23
-  def zipWith[A, B, C](as: List[A], bs: List[B])(f: (A, B) => C): List[C] = ???
+  def zipWith[A, B, C](as: List[A], bs: List[B])(f: (A, B) => C): List[C] = (as, bs) match {
+    case (Nil, _) => Nil
+    case (_, Nil) => Nil
+    case (Cons(ah,at), Cons(bh,bt)) => Cons(f(ah,bh), zipWith(at, bt)(f))
+  }
 
   // exercise 3.24
   def contains[A](as: List[A], a: A): Boolean = ???
