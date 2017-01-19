@@ -17,15 +17,15 @@ class Test4_05 extends WordSpec with Matchers {
 
   "sequence_via_traverse" should {
     "transform a List(Some) into Some(List)" in {
-      Option.sequence_via_traverse(List(Some(1), Some(2), Some(3))) should be(Some(List(1, 2, 3)))
+      Option.sequenceViaTraverse(List(Some(1), Some(2), Some(3))) should be(Some(List(1, 2, 3)))
     }
 
     "transform a List(Some|None) into None" in {
-      Option.sequence_via_traverse(List(Some(1), None, Some(3))) should be(None)
+      Option.sequenceViaTraverse(List(Some(1), None, Some(3))) should be(None)
     }
 
     "transform an emtpy list into Some(Nil)" in {
-      Option.sequence_via_traverse(Nil) should be(Some(Nil))
+      Option.sequenceViaTraverse(Nil) should be(Some(Nil))
     }
   }
 }
