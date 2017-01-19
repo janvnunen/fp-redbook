@@ -16,7 +16,7 @@ object Tree {
 
   // exercise 3.29
   def size[A](t: Tree[A]): Int =
-    fold(t)(_ => 1)(_ + _)
+    fold(t)(_ => 1)(1 + _ + _)
 
   // exercise 3.29
   def maximum(t: Tree[Int]): Int =
