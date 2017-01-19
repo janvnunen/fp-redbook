@@ -145,8 +145,10 @@ object Stream {
   def empty[A]: Stream[A] = Empty
 
   def apply[A](as: A*): Stream[A] =
-    if (as.isEmpty) empty
-    else cons(as.head, apply(as.tail: _*))
+    as.headOption match {
+      case Some(h) => cons(h, apply(as.tail: _*))
+      case None => empty
+    }
 
   val ones: Stream[Int] = Stream.cons(1, ones)
 
