@@ -1,5 +1,10 @@
 package nl.hugo.redbook.ch3
 
 object Exercise27 {
-  def depth[A](t: Tree[A]): Int = ???
+  def depth[A](t: Tree[A]): Int = {
+    t match {
+      case Leaf(_) => 1
+      case Branch(l, r) => 1 + (depth(l) max depth(r))
+    }
+  }
 }
